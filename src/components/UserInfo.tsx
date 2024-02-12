@@ -1,19 +1,25 @@
 import React, { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LOGIN_PATHNAME } from '../router';
-import { getUserInfoService } from '../services/user';
-import { useRequest } from 'ahooks';
+// import { getUserInfoService } from '../services/user';
+// import { useRequest } from 'ahooks';
 import { UserOutlined } from '@ant-design/icons';
 import { Button, message } from 'antd';
 import { removeToken } from '../utils/user-token';
+import useGetUserInfo from '../hooks/useGetUserInfo';
+import { logoutReducer } from '../store/userReducer';
+import { useDispatch } from 'react-redux';
 
 const UserInfo: FC = () => {
-  const { data } = useRequest(getUserInfoService);
-  const { username, nickname } = data || {};
+  // const { data } = useRequest(getUserInfoService);
+  // const { username, nickname } = data || {};
+  const { username, nickname } = useGetUserInfo();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // Logout fn
   const logout = () => {
     removeToken();
+    dispatch(logoutReducer());
     message.success('Logout Successfully');
     navigate({
       pathname: LOGIN_PATHNAME,

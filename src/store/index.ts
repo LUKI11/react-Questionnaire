@@ -1,0 +1,14 @@
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer, { UserStateType } from './userReducer';
+
+export type StateType = {
+  user: UserStateType;
+};
+
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+  },
+});
+
+export default store;
