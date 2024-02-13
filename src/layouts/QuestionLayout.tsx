@@ -21,5 +21,4 @@ const QuestionLayout: FC = () => {
   );
 };
 
-test;
 export default QuestionLayout;
