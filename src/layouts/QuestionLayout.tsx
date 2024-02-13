@@ -10,6 +10,7 @@ const QuestionLayout: FC = () => {
   useNavPage(waitingUserData);
   return (
     <div style={{ height: '100vh' }}>
+      test
       {waitingUserData ? (
         <div style={{ textAlign: 'center', marginTop: '100px' }}>
           <Spin />
