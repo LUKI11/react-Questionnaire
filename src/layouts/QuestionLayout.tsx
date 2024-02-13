@@ -17,7 +17,6 @@ const QuestionLayout: FC = () => {
       ) : (
         <Outlet></Outlet>
       )}
-      test
     </div>
   );
 };
