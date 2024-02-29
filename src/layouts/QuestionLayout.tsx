@@ -20,6 +20,4 @@ const QuestionLayout: FC = () => {
     </div>
   );
 };
-
-test;
 export default QuestionLayout;
