@@ -9,7 +9,6 @@ import { useDebounceFn, useRequest } from 'ahooks';
 import { getQuestionListService } from '../../services/question';
 import { LIST_PAGE_SIZE } from '../../constant';
 import { LIST_SEARCH_PARAM_KEY } from '../../constant';
-import useLoadQuestionListData from '../../hooks/useLoadQuestionListData';
 const { Title } = Typography;
 
 const List: FC = () => {

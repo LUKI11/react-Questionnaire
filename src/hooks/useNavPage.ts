@@ -9,7 +9,7 @@ import {
 } from '../router';
 
 const useNavPage = (waitingUserData: boolean) => {
-  const { username, nickname } = useGetUserInfo();
+  const { username } = useGetUserInfo();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {

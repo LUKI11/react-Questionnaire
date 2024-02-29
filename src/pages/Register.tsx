@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Form, Input, Space, Typography, Button, message } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import styles from './Register.module.scss';
