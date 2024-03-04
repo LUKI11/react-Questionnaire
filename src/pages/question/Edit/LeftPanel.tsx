@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Tabs } from 'antd';
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
 import ComponentLib from './ComponentLib';
+import Layer from './Layer';
 
 const LeftPanel: FC = () => {
   const tabsItems = [
@@ -14,7 +15,7 @@ const LeftPanel: FC = () => {
     {
       key: 'layers',
       label: 'Layers',
-      children: <div>Layers</div>,
+      children: <Layer></Layer>,
       icon: <BarsOutlined />,
     },
   ];

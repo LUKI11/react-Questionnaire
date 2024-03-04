@@ -6,6 +6,8 @@ import {
   LockOutlined,
   CopyOutlined,
   BlockOutlined,
+  RedoOutlined,
+  UndoOutlined,
 } from '@ant-design/icons';
 import {
   removeSelectedComponent,
@@ -16,6 +18,8 @@ import {
 } from '../../../store/components';
 import useGetComponentInfo from '../../../hooks/useGetComponentInfo';
 import { useDispatch } from 'react-redux';
+import { ActionCreators as UndoActionCreators } from 'redux-undo';
+
 const EditToolBar: FC = () => {
   const dispatch = useDispatch();
   // get current seleted component
@@ -67,6 +71,20 @@ const EditToolBar: FC = () => {
             icon={<BlockOutlined />}
             onClick={paster}
             disabled={copiedComponent == null}
+          ></Button>
+        </Tooltip>
+        <Tooltip placement="bottom" title="Redo">
+          <Button
+            shape="circle"
+            icon={<RedoOutlined />}
+            onClick={() => dispatch(UndoActionCreators.redo())}
+          ></Button>
+        </Tooltip>
+        <Tooltip placement="bottom" title="Undo">
+          <Button
+            shape="circle"
+            icon={<UndoOutlined />}
+            onClick={() => dispatch(UndoActionCreators.undo())}
           ></Button>
         </Tooltip>
       </Space>

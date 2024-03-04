@@ -7,6 +7,7 @@ import {
   selectNextComponent,
 } from '../store/components';
 import { useDispatch } from 'react-redux';
+import { ActionCreators as UndoActionCreators } from 'redux-undo';
 
 // check the active element is form element or not
 function isActiveElementValid() {
@@ -49,6 +50,16 @@ const useBindCanvasKeyPress = () => {
   //change current component to the next component by downarrow
   useKeyPress('downarrow', () => {
     dispatch(selectNextComponent());
+  });
+
+  // undo the step
+  useKeyPress(['ctrl.z', 'meta.z'], () => {
+    dispatch(UndoActionCreators.undo());
+  });
+
+  // redo the step
+  useKeyPress(['ctrl.y', 'meta.y'], () => {
+    dispatch(UndoActionCreators.redo());
   });
 };
 

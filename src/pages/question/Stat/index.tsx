@@ -3,6 +3,7 @@ import useLoadQuestionData from '../../../hooks/useLoadQuestionData';
 
 const Stat: FC = () => {
   const { loading, error } = useLoadQuestionData();
+
   return (
     <div>
       <p>Stat Page</p>

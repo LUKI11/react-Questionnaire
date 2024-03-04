@@ -4,6 +4,7 @@ import { useRequest } from 'ahooks';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { resetComponents } from '../store/components';
+import { resetPageInfo } from '../store/pageInfoReducer';
 
 const useLoadQuestionData = () => {
   const { id = '' } = useParams();
@@ -27,10 +28,13 @@ const useLoadQuestionData = () => {
   // send the component of a question data to redux and save on redux store
   useEffect(() => {
     if (!data) return;
-    const { componentList = [] } = data;
+    const { componentList = [], title = '', desc = '', css = '', js = '' } = data;
     let selectedId = '';
     if (componentList.length > 0) selectedId = componentList[0].fe_id; // default selected the first component
+    // put component data into component redux
     dispatch(resetComponents({ componentList, selectedId, copiedComponent: null }));
+    // put pageinfo data into pageinfo redux
+    dispatch(resetPageInfo({ title, desc, css, js }));
   }, [data]);
 
   return { loading, error, data };

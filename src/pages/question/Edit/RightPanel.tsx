@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Tabs } from 'antd';
 import { FileTextOutlined, SettingOutlined } from '@ant-design/icons';
 import ComponentProp from './ComponentProp';
+import PageInfo from './PageInfo';
 
 const RightPanel: FC = () => {
   const tabsItems = [
@@ -14,7 +15,7 @@ const RightPanel: FC = () => {
     {
       key: 'setting',
       label: 'Setting',
-      children: <div>Setting</div>,
+      children: <PageInfo></PageInfo>,
       icon: <SettingOutlined />,
     },
   ];
