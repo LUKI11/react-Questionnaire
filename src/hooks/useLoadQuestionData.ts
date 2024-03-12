@@ -28,13 +28,13 @@ const useLoadQuestionData = () => {
   // send the component of a question data to redux and save on redux store
   useEffect(() => {
     if (!data) return;
-    const { componentList = [], title = '', desc = '', css = '', js = '' } = data;
+    const { componentList = [], title = '', desc = '', css = '', js = '', isPublished } = data;
     let selectedId = '';
     if (componentList.length > 0) selectedId = componentList[0].fe_id; // default selected the first component
     // put component data into component redux
     dispatch(resetComponents({ componentList, selectedId, copiedComponent: null }));
     // put pageinfo data into pageinfo redux
-    dispatch(resetPageInfo({ title, desc, css, js }));
+    dispatch(resetPageInfo({ title, desc, css, js, isPublished }));
   }, [data]);
 
   return { loading, error, data };

@@ -7,9 +7,13 @@ import { changeSelectedId } from '../../../store/components';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import EditHeader from './EditHeader';
+import useGetPageInfo from '../../../hooks/useGetPageInfo';
+import { useTitle } from 'ahooks';
 
 const Edit: FC = () => {
   const { loading, error } = useLoadQuestionData();
+  const { title } = useGetPageInfo();
+  useTitle(`Edit - ${title}`);
   const dispatch = useDispatch();
   // clear component selected id
   const clearSelectedId = () => {
