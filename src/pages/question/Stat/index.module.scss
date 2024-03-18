@@ -1,0 +1,32 @@
+.main {
+    min-height: 100vh;
+    
+    .header {
+        background-color: #fff;
+        height: 48px;
+        line-height: 48px;
+    }
+
+    .content {
+        background-color: #ededed;
+        padding: 10px 0;
+
+        .left {
+            background-color: #ededed;
+            margin-right: 15px;
+            padding: 15px 20px;
+        }
+
+        .mid {
+            padding: 15px 20px;
+            background-color: #fff;
+        }
+
+        .right {
+            overflow: hidden;
+            background-color: #fff;
+            margin-left: 15px;
+            padding: 15px 20px;
+        }
+    }
+}
