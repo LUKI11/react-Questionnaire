@@ -1,0 +1,21 @@
+.component-wrapper {
+    
+    border: 1px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px;
+    padding: 12px;
+    cursor: pointer;
+    &:hover {
+        border-color: #adaaaa;
+    }
+}
+
+.selected {
+    border-color: #429ef3!important;
+}
+
+.component {
+    pointer-events: none;
+    opacity: .8;
+}

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import useLoadQuestionData from '../../../hooks/useLoadQuestionData';
 import useGetPageInfo from '../../../hooks/useGetPageInfo';
 import { useTitle } from 'ahooks';
@@ -13,6 +13,9 @@ const { Header, Content } = Layout;
 
 const Stat: FC = () => {
   const { loading } = useLoadQuestionData();
+
+  const [selectedComponentId, setSelectedComponentId] = useState('');
+  const [selectedComponentType, setSelectedComponentType] = useState('');
 
   const { title, isPublished } = useGetPageInfo();
   useTitle(`Statistics - ${title}`);
@@ -42,7 +45,11 @@ const Stat: FC = () => {
     return (
       <>
         <Sider width="20%" className={styles.left}>
-          <ComponentList></ComponentList>
+          <ComponentList
+            selectedComponentId={selectedComponentId}
+            setSelectedComponentId={setSelectedComponentId}
+            setSelectedComponentType={setSelectedComponentType}
+          ></ComponentList>
         </Sider>
         <Content className={styles.mid}>Content</Content>
         <Sider width="20%" className={styles.right}>

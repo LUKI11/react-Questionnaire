@@ -22,6 +22,7 @@ const StatHeader: FC = () => {
   const { title } = useGetPageInfo();
   const navigate = useNavigate();
   const { id } = useParams();
+
   // link and QRCode element, middle part
   const genLinkAndQRCode = () => {
     const url = `http://localhost:3000/question/${id}`;
