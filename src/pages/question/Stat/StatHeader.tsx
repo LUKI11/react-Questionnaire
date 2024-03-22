@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import {
   Row,
   Col,
@@ -10,35 +10,35 @@ import {
   message,
   QRCode,
   Popover,
+  InputRef,
 } from 'antd';
 import styles from './StatHeader.module.scss';
 import { LeftOutlined, CopyOutlined, QrcodeOutlined } from '@ant-design/icons';
 import useGetPageInfo from '../../../hooks/useGetPageInfo';
 import { useNavigate, useParams } from 'react-router';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const { Title } = Typography;
 const StatHeader: FC = () => {
   const { title } = useGetPageInfo();
   const navigate = useNavigate();
   const { id } = useParams();
-
   // link and QRCode element, middle part
   const genLinkAndQRCode = () => {
     const url = `http://localhost:3000/question/${id}`;
     const QRCodeElem = <QRCode value={url || '-'}></QRCode>;
+    const inputRef = useRef<InputRef>(null);
+    const copyURL = () => {
+      const inputEle = inputRef.current;
+      if (inputEle == null) return;
+      inputEle.select();
+      document.execCommand('copy');
+      message.success('Copy Successfully');
+    };
     return (
       <Space>
-        <Input value={url} style={{ width: '250px' }}></Input>
+        <Input value={url} style={{ width: '250px' }} ref={inputRef}></Input>
         <Tooltip title="Copy URL">
-          <CopyToClipboard
-            text={url}
-            onCopy={() => {
-              message.success('copy successfully');
-            }}
-          >
-            <Button icon={<CopyOutlined />}></Button>
-          </CopyToClipboard>
+          <Button icon={<CopyOutlined />} onClick={copyURL}></Button>
         </Tooltip>
         <Popover content={QRCodeElem} placement="bottom">
           <Button icon={<QrcodeOutlined />}></Button>

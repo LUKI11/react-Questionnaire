@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import Sider from 'antd/es/layout/Sider';
 import styles from './index.module.scss';
 import StatHeader from './StatHeader';
+import ComponentList from './ComponentList';
 
 const { Header, Content } = Layout;
 
@@ -41,7 +42,7 @@ const Stat: FC = () => {
     return (
       <>
         <Sider width="20%" className={styles.left}>
-          left
+          <ComponentList></ComponentList>
         </Sider>
         <Content className={styles.mid}>Content</Content>
         <Sider width="20%" className={styles.right}>
