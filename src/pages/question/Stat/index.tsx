@@ -2,12 +2,14 @@ import React, { FC, useState } from 'react';
 import useLoadQuestionData from '../../../hooks/useLoadQuestionData';
 import useGetPageInfo from '../../../hooks/useGetPageInfo';
 import { useTitle } from 'ahooks';
-import { Button, Result, Spin, Layout, Divider } from 'antd';
+import { Button, Result, Layout, Divider } from 'antd';
 import { useNavigate } from 'react-router';
 import Sider from 'antd/es/layout/Sider';
 import styles from './index.module.scss';
 import StatHeader from './StatHeader';
 import ComponentList from './ComponentList';
+import PageStat from './PageStat';
+import LoadingComponent from '../../../components/LoadingComponent';
 
 const { Header, Content } = Layout;
 
@@ -21,11 +23,7 @@ const Stat: FC = () => {
   useTitle(`Statistics - ${title}`);
   const navigate = useNavigate();
 
-  const LoadingElem = (
-    <div style={{ textAlign: 'center', marginTop: '100px' }}>
-      <Spin></Spin>
-    </div>
-  );
+  const LoadingElem = <LoadingComponent></LoadingComponent>;
 
   const genContentElem = () => {
     if (isPublished != null && !isPublished) {
@@ -51,7 +49,13 @@ const Stat: FC = () => {
             setSelectedComponentType={setSelectedComponentType}
           ></ComponentList>
         </Sider>
-        <Content className={styles.mid}>Content</Content>
+        <Content className={styles.mid}>
+          <PageStat
+            selectedComponentId={selectedComponentId}
+            setSelectedComponentId={setSelectedComponentId}
+            setSelectedComponentType={setSelectedComponentType}
+          ></PageStat>
+        </Content>
         <Sider width="20%" className={styles.right}>
           right
         </Sider>

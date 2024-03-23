@@ -1,6 +1,7 @@
 import axios, { ResDataType } from './ajax';
 
-export async function getStatList(
+// get Stat List
+export async function getQuestionStatListService(
   questionId: string,
   opt: { page: number; pageSize: number },
 ): Promise<ResDataType> {

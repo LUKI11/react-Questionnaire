@@ -1,12 +1,12 @@
 import React, { FC, MouseEvent } from 'react';
 import styles from './EditCanvas.module.scss';
 import useGetComponentInfo from '../../../hooks/useGetComponentInfo';
-import { Spin } from 'antd';
 import { getComponentConfigByType } from '../../../components/questionComponents';
 import { ComponentInfoType, changeSelectedId } from '../../../store/components';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import useBindCanvasKeyPress from '../../../hooks/useBindCanvasKeyPress';
+import LoadingComponent from '../../../components/LoadingComponent';
 type PropsType = {
   loading: boolean;
 };
@@ -32,12 +32,7 @@ const EditCanvas: FC<PropsType> = ({ loading }) => {
     dispatch(changeSelectedId(id));
   }
 
-  if (loading)
-    return (
-      <div style={{ textAlign: 'center', marginTop: '48px' }}>
-        <Spin></Spin>
-      </div>
-    );
+  if (loading) return <LoadingComponent></LoadingComponent>;
   return (
     <div className={styles.canvas}>
       {componentList
