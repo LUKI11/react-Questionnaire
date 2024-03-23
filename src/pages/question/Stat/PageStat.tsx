@@ -4,8 +4,10 @@ import { getQuestionStatListService } from '../../../services/stat';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { LIST_PAGE_PARAM_KEY, LIST_PAGE_SIZE_PARAM_KEY } from '../../../constant';
 import { getQuestionService } from '../../../services/question';
-import { Typography } from 'antd';
+import { Table, Typography } from 'antd';
 import LoadingComponent from '../../../components/LoadingComponent';
+import useGetComponentInfo from '../../../hooks/useGetComponentInfo';
+import ListPage from '../../../components/ListPage';
 
 const { Title } = Typography;
 
@@ -22,6 +24,9 @@ const PageStat: FC<PropsType> = (props: PropsType) => {
   const page = parseInt(searchParams.get(LIST_PAGE_PARAM_KEY) || '') || 1;
   const pageSize = parseInt(searchParams.get(LIST_PAGE_SIZE_PARAM_KEY) || '') || 10;
   const { id = '' } = useParams();
+
+  const { componentList } = useGetComponentInfo();
+  // get questionstat list
   const { loading } = useRequest(
     async () => {
       const res = await getQuestionStatListService(id, { page, pageSize });
@@ -36,11 +41,23 @@ const PageStat: FC<PropsType> = (props: PropsType) => {
       refreshDeps: [searchParams],
     },
   );
+  const columns = componentList.map((c) => {
+    const { fe_id, title, props } = c;
+    return {
+      title: props!.title || title,
+      dataIndex: fe_id,
+    };
+  });
 
+  const TableElem = <Table columns={columns} dataSource={list} pagination={false}></Table>;
   return (
     <div>
       {!loading && <Title level={3}>Total:{total}</Title>}
       {loading && <LoadingComponent></LoadingComponent>}
+      {!loading && TableElem}
+      <div style={{ textAlign: 'center' }}>
+        <ListPage total={total}></ListPage>
+      </div>
     </div>
   );
 };
