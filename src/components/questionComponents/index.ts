@@ -4,8 +4,14 @@ import QuestionTitleConfig, { QuestionTitlePropsType } from './questionTitle';
 import QuestionParagraphConfig, { QuestionParagraphPropsType } from './questionParagraph';
 import QuestionInfoConfig, { QuestionInfoPropsType } from './questionInfo';
 import QuestionTextareaConfig, { QuestionTextareaPropsType } from './questionTextarea';
-import QuestionRadioConfig, { QuestionRadioPropsType } from './questionRadio';
-import QuestionCheckboxConfig, { QuestionCheckboxPropsType } from './questionCheckbox';
+import QuestionRadioConfig, {
+  QuestionRadioPropsType,
+  QuestionRadioStatPropsType,
+} from './questionRadio';
+import QuestionCheckboxConfig, {
+  QuestionCheckboxPropsType,
+  QuestionCheckboxStatPropsType,
+} from './questionCheckbox';
 
 // component type
 export type ComponentPropsType = QuestionTitlePropsType &
@@ -16,6 +22,9 @@ export type ComponentPropsType = QuestionTitlePropsType &
   QuestionRadioPropsType &
   QuestionCheckboxPropsType;
 
+// stat chart type
+export type ComponentStatPropsType = QuestionRadioStatPropsType & QuestionCheckboxStatPropsType;
+
 // components config props type
 export type ComponentConfigType = {
   title: string;
@@ -23,6 +32,7 @@ export type ComponentConfigType = {
   Component: FC<ComponentPropsType>;
   PropComponent: FC<ComponentPropsType>;
   defaultProps: ComponentPropsType;
+  StatComponent?: FC<ComponentStatPropsType>;
 };
 
 //combine all components config

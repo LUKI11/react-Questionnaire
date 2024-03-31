@@ -3,6 +3,7 @@ export type OptionType = {
   text: string;
 };
 
+// radio question props type
 export type QuestionRadioPropsType = {
   title?: string;
   isVertical?: boolean;
@@ -10,6 +11,11 @@ export type QuestionRadioPropsType = {
   value?: string;
   onChange?: (newProps: QuestionRadioPropsType) => void;
   disabled?: boolean;
+};
+
+// radio stat props type
+export type QuestionRadioStatPropsType = {
+  stat: { name: string; count: number }[];
 };
 
 export const QuestionRadioPropsDefault: QuestionRadioPropsType = {

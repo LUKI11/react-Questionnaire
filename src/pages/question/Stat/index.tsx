@@ -10,6 +10,7 @@ import StatHeader from './StatHeader';
 import ComponentList from './ComponentList';
 import PageStat from './PageStat';
 import LoadingComponent from '../../../components/LoadingComponent';
+import ChartStat from './ChartStat';
 
 const { Header, Content } = Layout;
 
@@ -57,7 +58,10 @@ const Stat: FC = () => {
           ></PageStat>
         </Content>
         <Sider width="20%" className={styles.right}>
-          right
+          <ChartStat
+            selectedComponentType={selectedComponentType}
+            selectedComponentId={selectedComponentId}
+          ></ChartStat>
         </Sider>
       </>
     );

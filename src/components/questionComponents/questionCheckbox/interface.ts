@@ -12,6 +12,9 @@ export type QuestionCheckboxPropsType = {
   disabled?: boolean;
 };
 
+export type QuestionCheckboxStatPropsType = {
+  stat: Array<{ name: string; count: number }>;
+};
 export const QuestionCheckboxPropsDefault: QuestionCheckboxPropsType = {
   title: 'Checkbox',
   isVertical: false,
